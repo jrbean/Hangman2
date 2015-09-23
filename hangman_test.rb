@@ -25,7 +25,11 @@ class GameTest < Minitest::Test
       g.check_guess guess
     end
     assert g.game_won?
-
+    assert g.game_over?
     end
+
+  # def test_does_board_draw
+  #   g = Game.new answer: ("cat").chars
+
 
 end

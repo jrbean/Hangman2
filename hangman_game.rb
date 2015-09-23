@@ -2,7 +2,7 @@
 
 
 class Game
-attr_reader :guesses_left
+attr_reader :guesses_left, :correct_letters, :board
   def initialize answer: nil
     @guesses_left = 6
     @answer = ("cat").chars
@@ -20,15 +20,25 @@ attr_reader :guesses_left
     @guesses_left == 0 || game_won?
   end
 
-  def check_guess guessed_answer
-    if @answer.include? (guessed_answer)
-      @correct_letters.push (guessed_answer)
-    else @incorrect_letters.push (guessed_answer)
+  def check_guess guess
+    if @answer.include? (guess)
+      @correct_letters.push (guess)
+    else
+      @incorrect_letters.push (guess)
       @guesses_left -= 1
     end
   end
 
-
-
+  def draw_board
+    @board = []
+    @answer.each do |letter|
+      if @correct_letters.include? letter
+        @board.push letter + " "
+      else
+        @board.push "_ "
+      end
+    end
+    @board.join
+  end
 
 end
