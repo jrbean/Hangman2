@@ -5,7 +5,7 @@ class Game
 attr_reader :guesses_left, :correct_letters, :board
   def initialize answer: nil
     @guesses_left = 6
-    @answer = ("cat").chars
+    @answer = ["cat", "voodoo", "aardvark", "menace", "chartreuse", "breakfast"].sample.chars
     @correct_letters = []
     @incorrect_letters = []
   end
